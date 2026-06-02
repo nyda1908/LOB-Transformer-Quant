@@ -1,6 +1,6 @@
 # High-Frequency Trading Dynamics: A Multi-Channel Transformer Approach
 
-[![Paper](https://img.shields.io/badge/Whitepaper-PDF-blue)](whitepaper/LOB_Transformer_Whitepaper.pdf)
+[![Paper](https://img.shields.io/badge/Whitepaper-PDF-blue)](whitepaper/LOB_Transformer_Quant_main(11).pdf)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange)](https://pytorch.org/)
 [![Dataset](https://img.shields.io/badge/Dataset-FI--2010-green)](https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649)
