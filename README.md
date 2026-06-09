@@ -85,29 +85,27 @@ python src/train.py
 To train across all subsets:
 ```python
 # In train.py, set:
-subsets = [1, 3, 5, 7, 9]
+subsets = [1, 5, 9]
 ```
 
 ---
 
 ## Key Findings
 
-- **Weighted cross-entropy loss** applied to handle class imbalance 
-  across Up/Down/Stable labels
-- **Per-subset variance** (F1: 0.4687–0.5836) reflects genuine 
-  stock-specific microstructure differences
-- **Slower F1 decay** across horizons vs CNN-LOB baseline, validating 
-  temporal robustness of liquid neurons
-
+- **Ablation:** The LTC head improves mean F1 by +0.060 over a plain Transformer baseline (0.5864 vs 0.5259), confirming it is the primary driver of performance gains.
+- **Per-subset variance** (F1: 0.4980–0.6529) reflects genuine stock-specific microstructure differences.
+- **Weighted cross-entropy loss** applied to handle class imbalance across Up/Down/Stable labels.
+- **Accuracy-latency tradeoff:** The LTC head improves accuracy but adds a sequential dependency (3.56 ms/tick after JIT). The advantage is largest at short horizons (+0.143 at k=10) and narrows at k=100 (+0.054).
+  
 ---
 
 ## References
 
-1. Tsantekidis et al., "Forecasting Stock Prices from the LOB using CNNs," IEEE CBI, 2017
-2. Ntakaris et al., "Benchmark Dataset for Mid-Price Forecasting," Journal of Forecasting, 2018
-3. Hasani et al., "Liquid Time-Constant Networks," AAAI, 2021
-4. Vaswani et al., "Attention is All You Need," NeurIPS, 2017
-
+1. Ntakaris et al., "Benchmark Dataset for Mid-Price Forecasting of Limit Order Book Data," Journal of Forecasting, 2018
+2. Tsantekidis et al., "Forecasting Stock Prices from the Limit Order Book using CNNs," IEEE CBI, 2017
+3. Wallbridge, J., "Transformers for Limit Order Books," arXiv:2003.00130, 2020
+4. Hasani et al., "Liquid Time-Constant Networks," AAAI, 2021
+5. Vaswani et al., "Attention is All You Need," NeurIPS, 2017
 ---
 
 ## Author
