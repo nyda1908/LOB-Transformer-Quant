@@ -1,6 +1,6 @@
 # High-Frequency Trading Dynamics: A Multi-Channel Transformer Approach
 
-[![Paper](https://img.shields.io/badge/Whitepaper-PDF-blue)](whitepaper/LOB_Transformer_Quant_main%20(11).pdf)
+[![Paper](https://img.shields.io/badge/Whitepaper-PDF-blue)](whitepaper/LOB_Transformer_Whitepaper.pdf)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange)](https://pytorch.org/)
 [![Dataset](https://img.shields.io/badge/Dataset-FI--2010-green)](https://etsin.fairdata.fi/dataset/73eb48d7-4dbc-4a10-a52a-da745b47a649)
@@ -14,17 +14,18 @@ robustness across prediction horizons.
 
 ## Results
 
-Evaluated across 5 subsets (CF_1, CF_3, CF_5, CF_7, CF_9) of the 
-FI-2010 NoAuction Z-Score dataset at horizon k=100:
+Evaluated across 3 subsets (CF_1, CF_5, CF_9) of the FI-2010 NoAuction Z-Score dataset at horizon k=100:
 
 | Model | Accuracy | Precision | F1-Score |
 |---|---|---|---|
 | MLP Baseline | 41.20% | 42.10% | 0.4012 |
 | CNN-LOB | 54.12% | 55.08% | 0.5390 |
-| **Liquid Transformer (Ours)** | **54.80% ± 2.80%** | **53.33% ± 4.05%** | **0.5327 ± 0.0419** |
+| **Liquid Transformer (Ours)** | **58.64% ± 6.21%** | **58.26% ± 6.93%** | **0.5864 ± 0.0636** |
 | TransLOB (State-of-the-Art) | 62.10% | 61.40% | 0.6120 |
 
-**Inference latency:** 0.6711 ms per tick (~1,490 ticks/s) on NVIDIA T4 GPU.
+**Ablation:** The LTC head improves mean F1 by +0.060 over a plain Transformer baseline (0.5864 vs 0.5259).
+
+Inference latency: 3.56 ms per tick (~280 ticks/s) after TorchScript JIT compilation on NVIDIA T4 GPU. The LTC head introduces a sequential dependency, representing an accuracy-latency tradeoff (see whitepaper).
 
 ---
 
